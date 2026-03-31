@@ -32,8 +32,9 @@
                 <h1>Modélisation Interactive du Circuit</h1>
                 <div class="viewer-container">
                     <model-viewer src="circuit.glb" ar ar-modes="webxr scene-viewer" camera-controls
-                        tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" shadow-softness="1"
-                        min-camera-orbit="auto auto 0m" min-field-of-view="1deg" ar-scale="auto" ar-placement="floor"
+                        tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" 
+                        shadow-softness="1" min-camera-orbit="auto auto 0m"
+                        min-field-of-view="1deg" ar-scale="auto" ar-placement="floor" 
                         interaction-prompt="auto">
                         <button class="Hotspot" slot="hotspot-1"
                             data-position="-454.6773384277626m 10.153242533949019m 704.4818879800964m"
@@ -138,22 +139,19 @@
         const hotspots = document.querySelectorAll('.Hotspot');
 
         hotspots.forEach(hotspot => {
-            hotspot.addEventListener('click', (event) => {
-                // Petit effet visuel pour confirmer le clic (même en AR)
-                hotspot.style.backgroundColor = "#4285f4"; // Bleu Google
-                setTimeout(() => { hotspot.style.backgroundColor = ""; }, 500);
-
+            hotspot.addEventListener('click', () => {
                 // On récupère la position 3D du hotspot
                 const position = hotspot.dataset.position;
 
                 // On fixe le point de focus de la caméra sur cette position
                 modelViewer.cameraTarget = position;
 
-                // Zoom (sur PC/Mobile 2D uniquement)
+                // On effectue un zoom en ajustant le 'radius' de l'orbite (ici 150m pour être proche)
+                // "auto auto" garde la rotation actuelle. Vous pouvez tester 50m, 100m, etc.
                 modelViewer.cameraOrbit = "auto auto 50m";
-                modelViewer.fieldOfView = "30deg";
 
-                console.log("Hotspot cliqué : " + position);
+                // On s'assure que le champ de vision (FOV) est normal (ex: 30 degrés)
+                modelViewer.fieldOfView = "30deg";
             });
         });
     </script>
