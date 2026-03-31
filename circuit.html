@@ -33,7 +33,8 @@
                 <div class="viewer-container">
                     <model-viewer src="circuit.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
                         tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" min-camera-orbit="auto auto 0m"
-                        min-field-of-view="1deg" ar-scale="auto">
+                        min-field-of-view="1deg" ar-scale="auto" ar-placement="floor" shadow-softness="1"
+                        camera-target="-454.677m 10.153m 704.482m" camera-orbit="auto auto 100m">
                         <button class="Hotspot" slot="hotspot-1"
                             data-position="-454.6773384277626m 10.153242533949019m 704.4818879800964m"
                             data-normal="-0.00006796396932848664m 0.9999898970126886m -0.004494580453338372m"
@@ -138,17 +139,20 @@
 
         hotspots.forEach(hotspot => {
             hotspot.addEventListener('click', () => {
-                // On récupère la position 3D du hotspot
+                // On récupère la position 3D du hotspot (format: "X.Xm Y.Ym Z.Zm")
                 const position = hotspot.dataset.position;
+                const coords = position.split(' ').map(c => parseFloat(c));
 
-                // On fixe le point de focus de la caméra sur cette position
-                modelViewer.cameraTarget = position;
+                // On définit une cible décalée de 5m vers le haut (Y)
+                const targetAbove = `${coords[0]}m ${coords[1] + 5}m ${coords[2]}m`;
 
-                // On effectue un zoom en ajustant le 'radius' de l'orbite (ici 150m pour être proche)
-                // "auto auto" garde la rotation actuelle. Vous pouvez tester 50m, 100m, etc.
-                modelViewer.cameraOrbit = "auto auto 50m";
+                // On fixe le point de focus de la caméra sur cette position élevée
+                modelViewer.cameraTarget = targetAbove;
 
-                // On s'assure que le champ de vision (FOV) est normal (ex: 30 degrés)
+                // On effectue un zoom avec un radius de 20m pour être proche
+                modelViewer.cameraOrbit = "auto auto 20m";
+
+                // On s'assure que le champ de vision (FOV) est normal
                 modelViewer.fieldOfView = "30deg";
             });
         });
