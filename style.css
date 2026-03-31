@@ -2,14 +2,14 @@
 body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #fff; }
 
 .main-header {
-    background: var(--dark); color: white; padding: 1rem 5%;
+    background: var(--dark); color: white; padding: 0.15rem 5%;
     display: flex; justify-content: space-between; align-items: center;
     position: sticky; top: 0; z-index: 100;
 }
 .logo span { color: var(--red); }
 
 /* Taille du logo dans l'en-tête */
-.logo img { width: 80px; height: auto; display: block; }
+.logo img { width: 120px; height: auto; display: block; }
 nav ul { display: flex; list-style: none; gap: 20px; }
 nav a { color: white; text-decoration: none; }
 
