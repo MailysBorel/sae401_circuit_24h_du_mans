@@ -48,6 +48,7 @@ model-viewer {
     width: 24px;
     padding: 0;
     transition: transform 0.2s, background 0.2s;
+    pointer-events: auto; /* Indispensable pour le clic en AR WebXR */
 }
 
 .Hotspot:hover {
