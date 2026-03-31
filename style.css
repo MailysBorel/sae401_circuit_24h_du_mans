@@ -21,8 +21,45 @@ nav a { color: white; text-decoration: none; }
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     border-radius: 15px;
     overflow: hidden;
+    width: 100%;
+    height: 600px; /* Hauteur globale du conteneur */
+}
+
+model-viewer {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    outline: none;
 }
 
 .grid-articles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
 .card { padding: 20px; background: #f9f9f9; border-top: 4px solid var(--red); text-align: left; }
 .light-bg { background: #eee; }
+
+/* Style pour les points cliquables (Hotspots) sur le modèle 3D */
+.Hotspot {
+    background: var(--red);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    padding: 0;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.Hotspot:hover {
+    transform: scale(1.3);
+    background: white;
+    border-color: var(--red);
+}
+
+.Hotspot:not([data-visible]) {
+    /* Cache les hotspots quand ils sont tournés derrière le modèle */
+    background: transparent;
+    border: 2px solid transparent;
+    box-shadow: none;
+    pointer-events: none;
+}

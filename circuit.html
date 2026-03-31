@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Circuit du Mans - 3D</title>
@@ -7,8 +8,9 @@
     <link rel="icon" type="image/png" href="logo_24h_le_mans.png">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
     <header class="main-header">
         <div class="logo">
             <a href="index.html">
@@ -23,69 +25,134 @@
             </ul>
         </nav>
     </header>
-    
+
     <main>
         <section id="3d-section" class="section">
             <div class="container">
                 <h1>Modélisation Interactive du Circuit</h1>
                 <div class="viewer-container">
-                    <model-viewer
-                    src="ton-fichier-circuit.glb"
-                    ios-src=""
-                    alt="Un modèle 3D du circuit des 24h du Mans"
-                    shadow-intensity="1"
-                    camera-controls
-                    auto-rotate
-                    ar
-                    style="width: 100%; height: 500px; background-color: #1a1a1a; border-radius: 15px;">
-                    
-                    <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; padding: 10px;">
-                        👋 Voir en AR
-                    </button>
-                </model-viewer>
-            </div>
-            <p class="help-text">Utilisez votre souris pour pivoter et zoomer sur le tracé.</p>
-        </div>
-    </section>
-    
-    <section id="articles" class="section light-bg"> <br><br> <br>
-        <div class="container">
-            <h2>L'Histoire du Mans</h2>
-            <div class="articles">
-                <article class="card">
-                    <h3>1923 : La naissance</h3>
-                    <p>Les 24 Heures du Mans sont une célèbre course d’endurance de 24 heures qui se tient chaque année en juin.
-                        Créée en 1923, elle se déroule sur un circuit mythique de 13,6 km situé au Mans, à environ 1h30 de Paris,
-                        mêlant routes départementales au sud de la ville et une portion du circuit permanent Bugatti.
-                        Cette épreuve figure parmi les trois compétitions automobiles les plus prestigieuses au monde,
-                        aux côtés du Grand Prix de Monaco et des 500 miles d’Indianapolis. Elle reste également l’une des
-                        plus anciennes courses automobiles encore disputées aujourd’hui.</p>
-                        
-                        <p>Contrairement à la Formule 1, où la victoire revient au pilote le plus rapide, cette compétition légendaire couronne avant tout la fiabilité,
-                            la stratégie et la résistance mécanique autant qu’humaine. Aujourd’hui, elle constitue l’épreuve phare d’un véritable championnat mondial d’endurance,
-                            attirant constructeurs, ingénieurs et pilotes venus repousser les limites de la performance sur la durée.</p>
-                            
-                            <p>Au fil des décennies, le circuit évolue constamment. Certaines sections deviennent mythiques :
-                                <br>- La ligne droite des Hunaudières, longue de 6 km, où un prototype WM atteindra un record de 407 km/h ;
-                                <br>- Le virage de Mulsanne, connu pour son freinage brutal et sa dangerosité ;
-                                <br>- La chicane Dunlop, véritable symbole visuel du circuit ;
-                                <br>- ou encore l’enchaînement Indianapolis–Arnage, l’un des plus techniques et des plus lents du tracé.<br>
-                                <br>Ces évolutions ne sont pas seulement historiques : elles sont aussi techniques. Le Mans devient un véritable laboratoire d’innovation.
-                                On y voit apparaître les pneus radiaux dans les années 1950, les freins à disque en 1953, puis les phares LED dans les années 2000.
-                                Chaque avancée testée sur le circuit influence ensuite l’industrie automobile.</p>
-                                
-                                <p>L’histoire du Mans est aussi marquée par des moments tragiques. L’un des plus sombres reste la catastrophe de 1955,
-                                    lorsqu’une Mercedes s’envole dans les tribunes, provoquant la mort de 79 personnes. Cet événement bouleverse profondément
-                                    le sport automobile et entraîne une refonte des normes de sécurité dans le monde entier.
-                                    À partir des années 1960, le circuit devient le théâtre de rivalités mythiques. La plus célèbre est sans doute Ferrari contre Ford (1963–1966),
-                                    une bataille technologique et financière colossale qui se conclut par la domination totale de Ford. Plus tard, d’autres duels marqueront l’histoire,
-                                    comme Audi contre Toyota dans les années 2010, ou plus récemment Ferrari contre Peugeot.
-                                    Aujourd’hui, le circuit des 24 Heures du Mans reste un monument du sport automobile :
-                                    un lieu où se rencontrent tradition, innovation, performance et histoire</p>
-                                </article>
-                            </div>
+                    <model-viewer src="circuit.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
+                        tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" min-camera-orbit="auto auto 0m"
+                        min-field-of-view="1deg">
+                        <button class="Hotspot" slot="hotspot-1"
+                            data-position="-454.6773384277626m 10.153242533949019m 704.4818879800964m"
+                            data-normal="-0.00006796396932848664m 0.9999898970126886m -0.004494580453338372m"
+                            data-visibility-attribute="visible"></button><button class="Hotspot" slot="hotspot-2"
+                            data-position="-815.8620128840724m 4.314238071442105m 562.8461886822791m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
+                            slot="hotspot-3" data-position="-1085.4792274081826m 4.30850744247482m 181.5616661642193m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
+                            slot="hotspot-4"
+                            data-position="-228.07508414587363m 4.383199691772461m -206.78868851323048m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
+                            slot="hotspot-5" data-position="-835.6373700209144m 4.314240455627441m -6.205059056651756m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
+                            slot="hotspot-6" data-position="1540.4779348321417m 4.32509708404541m -732.3695463719883m"
+                            data-normal="0m -1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
+                            slot="hotspot-7" data-position="1095.143765017889m 4.3141984939575195m 179.1376684067734m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
+                            slot="hotspot-8" data-position="548.9407231149139m 4.2528457641597015m 636.9028980677082m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
+                            slot="hotspot-9" data-position="172.93279961722547m 4.092116355895996m 559.2823235098854m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
+                            slot="hotspot-10"
+                            data-position="-168.95115103140398m 3.9795031547546387m 632.1979575069216m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button>
+                        <div class="progress-bar hide" slot="progress-bar">
+                            <div class="update-bar"></div>
                         </div>
-                    </section>
-                </main>
-            </body>
-            </html>
+                        <button slot="ar-button" id="ar-button">
+                            View in your space
+                        </button>
+                        <div id="ar-prompt">
+                            <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+                        </div>
+                    </model-viewer>
+
+                </div>
+                <p class="help-text">Utilisez votre souris pour pivoter et zoomer sur le tracé.</p>
+            </div>
+        </section>
+
+        <section id="articles" class="section light-bg"> <br><br> <br>
+            <div class="container">
+                <h2>L'Histoire du Mans</h2>
+                <div class="articles">
+                    <article class="card">
+                        <h3>1923 : La naissance</h3>
+                        <p>Les 24 Heures du Mans sont une célèbre course d’endurance de 24 heures qui se tient chaque
+                            année en juin.
+                            Créée en 1923, elle se déroule sur un circuit mythique de 13,6 km situé au Mans, à environ
+                            1h30 de Paris,
+                            mêlant routes départementales au sud de la ville et une portion du circuit permanent
+                            Bugatti.
+                            Cette épreuve figure parmi les trois compétitions automobiles les plus prestigieuses au
+                            monde,
+                            aux côtés du Grand Prix de Monaco et des 500 miles d’Indianapolis. Elle reste également
+                            l’une des
+                            plus anciennes courses automobiles encore disputées aujourd’hui.</p>
+
+                        <p>Contrairement à la Formule 1, où la victoire revient au pilote le plus rapide, cette
+                            compétition légendaire couronne avant tout la fiabilité,
+                            la stratégie et la résistance mécanique autant qu’humaine. Aujourd’hui, elle constitue
+                            l’épreuve phare d’un véritable championnat mondial d’endurance,
+                            attirant constructeurs, ingénieurs et pilotes venus repousser les limites de la performance
+                            sur la durée.</p>
+
+                        <p>Au fil des décennies, le circuit évolue constamment. Certaines sections deviennent mythiques
+                            :
+                            <br>- La ligne droite des Hunaudières, longue de 6 km, où un prototype WM atteindra un
+                            record de 407 km/h ;
+                            <br>- Le virage de Mulsanne, connu pour son freinage brutal et sa dangerosité ;
+                            <br>- La chicane Dunlop, véritable symbole visuel du circuit ;
+                            <br>- ou encore l’enchaînement Indianapolis–Arnage, l’un des plus techniques et des plus
+                            lents du tracé.<br>
+                            <br>Ces évolutions ne sont pas seulement historiques : elles sont aussi techniques. Le Mans
+                            devient un véritable laboratoire d’innovation.
+                            On y voit apparaître les pneus radiaux dans les années 1950, les freins à disque en 1953,
+                            puis les phares LED dans les années 2000.
+                            Chaque avancée testée sur le circuit influence ensuite l’industrie automobile.
+                        </p>
+
+                        <p>L’histoire du Mans est aussi marquée par des moments tragiques. L’un des plus sombres reste
+                            la catastrophe de 1955,
+                            lorsqu’une Mercedes s’envole dans les tribunes, provoquant la mort de 79 personnes. Cet
+                            événement bouleverse profondément
+                            le sport automobile et entraîne une refonte des normes de sécurité dans le monde entier.
+                            À partir des années 1960, le circuit devient le théâtre de rivalités mythiques. La plus
+                            célèbre est sans doute Ferrari contre Ford (1963–1966),
+                            une bataille technologique et financière colossale qui se conclut par la domination totale
+                            de Ford. Plus tard, d’autres duels marqueront l’histoire,
+                            comme Audi contre Toyota dans les années 2010, ou plus récemment Ferrari contre Peugeot.
+                            Aujourd’hui, le circuit des 24 Heures du Mans reste un monument du sport automobile :
+                            un lieu où se rencontrent tradition, innovation, performance et histoire</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const modelViewer = document.querySelector('model-viewer');
+        const hotspots = document.querySelectorAll('.Hotspot');
+
+        hotspots.forEach(hotspot => {
+            hotspot.addEventListener('click', () => {
+                // On récupère la position 3D du hotspot
+                const position = hotspot.dataset.position;
+
+                // On fixe le point de focus de la caméra sur cette position
+                modelViewer.cameraTarget = position;
+
+                // On effectue un zoom en ajustant le 'radius' de l'orbite (ici 150m pour être proche)
+                // "auto auto" garde la rotation actuelle. Vous pouvez tester 50m, 100m, etc.
+                modelViewer.cameraOrbit = "auto auto 50m";
+
+                // On s'assure que le champ de vision (FOV) est normal (ex: 30 degrés)
+                modelViewer.fieldOfView = "30deg";
+            });
+        });
+    </script>
+</body>
+
+</html>
