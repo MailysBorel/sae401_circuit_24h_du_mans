@@ -31,43 +31,106 @@
             <div class="container">
                 <h1>Modélisation Interactive du Circuit</h1>
                 <div class="viewer-container">
+                    <button id="toggle-sidebar" class="toggle-sidebar floating" title="Réduire le menu">
+                        <span class="chevron">‹</span>
+                    </button>
+                    <div class="viewer-sidebar" id="sidebar">
+                        <div class="sidebar-header">
+                            <h3>Navigation</h3>
+                        </div>
+                        <ul id="hotspot-list">
+                            <li data-hotspot="hotspot-1">Chicane Dunlop</li>
+                            <li data-hotspot="hotspot-2">Virage de la Chapelle</li>
+                            <li data-hotspot="hotspot-3">Virage du Tertre Rouge</li>
+                            <li data-hotspot="hotspot-4">Hunaudières - Ch. 1</li>
+                            <li data-hotspot="hotspot-5">Hunaudières - Ch. 2</li>
+                            <li data-hotspot="hotspot-6">Virage de Mulsanne</li>
+                            <li data-hotspot="hotspot-7">Virage d'Indianapolis</li>
+                            <li data-hotspot="hotspot-8">Virage d'Arnage</li>
+                            <li data-hotspot="hotspot-9">Virages Porsche</li>
+                            <li data-hotspot="hotspot-10">Virage Ford</li>
+                        </ul>
+                    </div>
                     <model-viewer src="circuit.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
-                        tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" min-camera-orbit="auto auto 0m"
-                        min-field-of-view="1deg" ar-scale="auto" ar-placement="floor" shadow-softness="1"
+                        tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" min-camera-orbit="auto auto 5m"
+                        min-field-of-view="5deg" ar-scale="auto" ar-placement="floor" shadow-softness="1"
                         camera-target="-454.677m 10.153m 704.482m" camera-orbit="auto auto 100m"
                         skybox-image="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloppenheim_06_1k.hdr"
                         environment-image="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloppenheim_06_1k.hdr"
-                        exposure="1.2">
+                        exposure="1.2" auto-rotate rotation-per-second="10deg" interaction-prompt="when-focused"
+                        interpolation-decay="200">
+
                         <button class="Hotspot" slot="hotspot-1"
                             data-position="-454.6773384277626m 10.153242533949019m 704.4818879800964m"
                             data-normal="-0.00006796396932848664m 0.9999898970126886m -0.004494580453338372m"
-                            data-visibility-attribute="visible"></button><button class="Hotspot" slot="hotspot-2"
+                            data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Chicane Dunlop</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-2"
                             data-position="-815.8620128840724m 4.314238071442105m 562.8461886822791m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
-                            slot="hotspot-3" data-position="-1085.4792274081826m 4.30850744247482m 181.5616661642193m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
-                            slot="hotspot-4"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virage de la Chapelle</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-3"
+                            data-position="-1085.4792274081826m 4.30850744247482m 181.5616661642193m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virage du Tertre Rouge</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-4"
                             data-position="-228.07508414587363m 4.383199691772461m -206.78868851323048m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
-                            slot="hotspot-5" data-position="-835.6373700209144m 4.314240455627441m -6.205059056651756m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
-                            slot="hotspot-6" data-position="1540.4779348321417m 4.32509708404541m -732.3695463719883m"
-                            data-normal="0m -1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
-                            slot="hotspot-7" data-position="1095.143765017889m 4.3141984939575195m 179.1376684067734m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
-                            slot="hotspot-8" data-position="548.9407231149139m 4.2528457641597015m 636.9028980677082m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
-                            slot="hotspot-9" data-position="172.93279961722547m 4.092116355895996m 559.2823235098854m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button><button class="Hotspot"
-                            slot="hotspot-10"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Hunaudières - Chicane 1</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-5"
+                            data-position="-835.6373700209144m 4.314240455627441m -6.205059056651756m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Hunaudières - Chicane 2</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-6"
+                            data-position="1540.4779348321417m 4.32509708404541m -732.3695463719883m"
+                            data-normal="0m -1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virage de Mulsanne</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-7"
+                            data-position="1095.143765017889m 4.3141984939575195m 179.1376684067734m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virage d'Indianapolis</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-8"
+                            data-position="548.9407231149139m 4.2528457641597015m 636.9028980677082m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virage d'Arnage</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-9"
+                            data-position="172.93279961722547m 4.092116355895996m 559.2823235098854m"
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virages Porsche</div>
+                        </button>
+                        <button class="Hotspot" slot="hotspot-10"
                             data-position="-168.95115103140398m 3.9795031547546387m 632.1979575069216m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible"></button>
+                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virage Ford</div>
+                        </button>
                         <div class="progress-bar hide" slot="progress-bar">
                             <div class="update-bar"></div>
                         </div>
                         <button slot="ar-button" id="ar-button">
-                            View in your space
+                            Vue en réalité augmentée
                         </button>
+                        <div class="viewer-controls">
+                            <button id="reset-button" class="control-button" title="Réinitialiser la vue">
+                                <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                            </button>
+                            <button id="fullscreen-button" class="control-button" title="Plein écran">
+                                <svg id="fullscreen-icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                            </button>
+                        </div>
+
+                        <div id="info-panel" class="info-panel hidden">
+                            <button class="close-info">&times;</button>
+                            <h3 id="info-title">Titre</h3>
+                            <p id="info-description">Description du point d'intérêt.</p>
+                        </div>
 
                     </model-viewer>
 
@@ -138,24 +201,128 @@
         const modelViewer = document.querySelector('model-viewer');
         const hotspots = document.querySelectorAll('.Hotspot');
 
+        const infoPanel = document.querySelector('#info-panel');
+        const infoTitle = document.querySelector('#info-title');
+        const infoDescription = document.querySelector('#info-description');
+        const closeInfo = document.querySelector('.close-info');
+        const hotspotListItems = document.querySelectorAll('#hotspot-list li');
+        const resetButton = document.querySelector('#reset-button');
+
+        const hotspotData = {
+            'hotspot-1': { title: "Chicane Dunlop", desc: "Créée pour ralentir les voitures avant la courbe Dunlop, c'est l'un des points les plus iconiques du circuit historique." },
+            'hotspot-2': { title: "Virage de la Chapelle", desc: "Un virage technique qui demande une grande précision, nommé d'après la petite chapelle située à proximité." },
+            'hotspot-3': { title: "Virage du Tertre Rouge", desc: "Le point d'entrée vers la mythique ligne droite des Hunaudières. Un virage crucial pour la vitesse de pointe." },
+            'hotspot-4': { title: "Hunaudières - Chicane 1", desc: "Première des deux chicanes ajoutées en 1990 pour limiter la vitesse maximale des voitures sur la ligne droite de 6km." },
+            'hotspot-5': { title: "Hunaudières - Chicane 2", desc: "Deuxième chicane de la ligne droite, surnommée chicane 'Michelin' par le passé." },
+            'hotspot-6': { title: "Virage de Mulsanne", desc: "Un virage à 90 degrés mythique au bout des Hunaudières, lieu de nombreux freinages spectaculaires." },
+            'hotspot-7': { title: "Virage d'Indianapolis", desc: "Un virage rapide avec un léger dévers, nommé en hommage au célèbre circuit américain." },
+            'hotspot-8': { title: "Virage d'Arnage", desc: "Le virage le plus lent du circuit, très technique et apprécié des photographes pour la proximité des voitures." },
+            'hotspot-9': { title: "Virages Porsche", desc: "Un enchaînement de virages rapides et techniques, réservé aux pilotes les plus audacieux." },
+            'hotspot-10': { title: "Virage Ford", desc: "L'ultime chicane avant la ligne droite des stands, souvent le théâtre de manœuvres décisives dans le dernier tour." }
+        };
+
+        const initialTarget = modelViewer.cameraTarget;
+        const initialOrbit = modelViewer.cameraOrbit;
+
+        // Intro Animation
+        modelViewer.addEventListener('load', () => {
+            modelViewer.cameraOrbit = "auto 180deg 150m";
+            setTimeout(() => {
+                modelViewer.cameraOrbit = "auto 75deg 100m";
+            }, 1000);
+        });
+
+        function focusHotspot(id) {
+            const hotspot = document.querySelector(`[slot="${id}"]`);
+            if (!hotspot) return;
+            
+            const position = hotspot.dataset.position;
+            const coords = position.split(' ').map(c => parseFloat(c));
+            const targetAbove = `${coords[0]}m ${coords[1] + 5}m ${coords[2]}m`;
+
+            modelViewer.cameraTarget = targetAbove;
+            modelViewer.cameraOrbit = "auto auto 20m";
+            modelViewer.fieldOfView = "30deg";
+
+            // Show Info Panel
+            if (hotspotData[id]) {
+                infoTitle.innerText = hotspotData[id].title;
+                infoDescription.innerText = hotspotData[id].desc;
+                infoPanel.classList.remove('hidden');
+            }
+        }
+
         hotspots.forEach(hotspot => {
             hotspot.addEventListener('click', () => {
-                // On récupère la position 3D du hotspot (format: "X.Xm Y.Ym Z.Zm")
-                const position = hotspot.dataset.position;
-                const coords = position.split(' ').map(c => parseFloat(c));
-
-                // On définit une cible décalée de 5m vers le haut (Y)
-                const targetAbove = `${coords[0]}m ${coords[1] + 5}m ${coords[2]}m`;
-
-                // On fixe le point de focus de la caméra sur cette position élevée
-                modelViewer.cameraTarget = targetAbove;
-
-                // On effectue un zoom avec un radius de 20m pour être proche
-                modelViewer.cameraOrbit = "auto auto 20m";
-
-                // On s'assure que le champ de vision (FOV) est normal
-                modelViewer.fieldOfView = "30deg";
+                focusHotspot(hotspot.slot);
             });
+        });
+
+        hotspotListItems.forEach(item => {
+            item.addEventListener('click', () => {
+                focusHotspot(item.dataset.hotspot);
+            });
+        });
+
+        resetButton.addEventListener('click', () => {
+            modelViewer.cameraTarget = initialTarget;
+            modelViewer.cameraOrbit = "auto 75deg 100m";
+            modelViewer.fieldOfView = "auto";
+            infoPanel.classList.add('hidden');
+        });
+
+        const sidebar = document.querySelector('#sidebar');
+        const toggleSidebar = document.querySelector('#toggle-sidebar');
+
+        toggleSidebar.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            const isCollapsed = sidebar.classList.contains('collapsed');
+            toggleSidebar.querySelector('.chevron').innerText = isCollapsed ? '›' : '‹';
+            toggleSidebar.title = isCollapsed ? "Ouvrir le menu" : "Réduire le menu";
+            
+            if (isCollapsed) {
+                toggleSidebar.classList.add('collapsed');
+            } else {
+                toggleSidebar.classList.remove('collapsed');
+            }
+
+            // Re-render model-viewer to ensure it fills the new space
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+            }, 300);
+        });
+
+        const fullscreenButton = document.querySelector('#fullscreen-button');
+        const viewerContainer = document.querySelector('.viewer-container');
+
+        fullscreenButton.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                viewerContainer.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', () => {
+            const icon = document.querySelector('#fullscreen-icon path');
+            if (document.fullscreenElement) {
+                icon.setAttribute('d', 'M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z');
+            } else {
+                icon.setAttribute('d', 'M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z');
+            }
+        });
+
+        // Stop auto-rotate on interaction
+        modelViewer.addEventListener('camera-change', (event) => {
+            if (event.detail.source === 'user-interaction') {
+                modelViewer.autoRotate = false;
+            }
+        });
+
+        closeInfo.addEventListener('click', () => {
+            infoPanel.classList.add('hidden');
         });
     </script>
 </body>
