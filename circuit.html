@@ -39,16 +39,17 @@
                             <h3>Navigation</h3>
                         </div>
                         <ul id="hotspot-list">
-                            <li data-hotspot="hotspot-1">Chicane Dunlop</li>
-                            <li data-hotspot="hotspot-2">Virage de la Chapelle</li>
-                            <li data-hotspot="hotspot-3">Virage du Tertre Rouge</li>
-                            <li data-hotspot="hotspot-4">Hunaudières - Ch. 1</li>
-                            <li data-hotspot="hotspot-5">Hunaudières - Ch. 2</li>
-                            <li data-hotspot="hotspot-6">Virage de Mulsanne</li>
-                            <li data-hotspot="hotspot-7">Virage d'Indianapolis</li>
-                            <li data-hotspot="hotspot-8">Virage d'Arnage</li>
-                            <li data-hotspot="hotspot-9">Virages Porsche</li>
-                            <li data-hotspot="hotspot-10">Virage Ford</li>
+                            <li data-hotspot="hotspot-1">Ligne de départ</li>
+                            <li data-hotspot="hotspot-2">Chicane Dunlop</li>
+                            <li data-hotspot="hotspot-3">Tertre Rouge</li>
+                            <li data-hotspot="hotspot-5">Hunaudières - Début</li>
+                            <li data-hotspot="hotspot-6">Hunaudières - Chicane 1</li>
+                            <li data-hotspot="hotspot-7">Hunaudières - Chicane 2</li>
+                            <li data-hotspot="hotspot-9">Virage Mulsanne</li>
+                            <li data-hotspot="hotspot-10">Indy + Arnage</li>
+                            <li data-hotspot="hotspot-12">Virage Porsche</li>
+                            <li data-hotspot="hotspot-13">Virage Karting</li>
+                            <li data-hotspot="hotspot-14">Ford + Raccordement</li>
                         </ul>
                     </div>
                     <model-viewer src="circuit.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
@@ -60,56 +61,28 @@
                         exposure="1.2" auto-rotate rotation-per-second="10deg" interaction-prompt="when-focused"
                         interpolation-decay="200">
 
-                        <button class="Hotspot" slot="hotspot-1"
-                            data-position="-454.6773384277626m 10.153242533949019m 704.4818879800964m"
-                            data-normal="-0.00006796396932848664m 0.9999898970126886m -0.004494580453338372m"
-                            data-visibility-attribute="visible">
+                        <button class="Hotspot" slot="hotspot-1" data-position="-482.4737777901139m 4.31423807144165m 683.4232897983183m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Ligne de départ</div>
+                        </button><button class="Hotspot" slot="hotspot-2" data-position="-785.4393696273469m 4.31423807144165m 566.866201008519m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
                             <div class="HotspotAnnotation">Chicane Dunlop</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-2"
-                            data-position="-815.8620128840724m 4.314238071442105m 562.8461886822791m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Virage de la Chapelle</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-3"
-                            data-position="-1085.4792274081826m 4.30850744247482m 181.5616661642193m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Virage du Tertre Rouge</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-4"
-                            data-position="-228.07508414587363m 4.383199691772461m -206.78868851323048m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Hunaudières - Chicane 1</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-5"
-                            data-position="-835.6373700209144m 4.314240455627441m -6.205059056651756m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Hunaudières - Chicane 2</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-6"
-                            data-position="1540.4779348321417m 4.32509708404541m -732.3695463719883m"
-                            data-normal="0m -1m 0m" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Virage de Mulsanne</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-7"
-                            data-position="1095.143765017889m 4.3141984939575195m 179.1376684067734m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Virage d'Indianapolis</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-8"
-                            data-position="548.9407231149139m 4.2528457641597015m 636.9028980677082m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Virage d'Arnage</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-9"
-                            data-position="172.93279961722547m 4.092116355895996m 559.2823235098854m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                        </button><button class="Hotspot" slot="hotspot-3" data-position="-1085.9973429191523m 4.308507442474365m 191.72815956766863m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Tertre Rouge</div>
+                        </button><button class="Hotspot" slot="hotspot-5" data-position="-522.7418191687354m 4.314240143337429m -121.80077983067774m" data-normal="2.3908080059313876e-9m 1m -8.869588014912416e-10m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Début Hunaudières</div>
+                        </button><button class="Hotspot" slot="hotspot-6" data-position="-228.5770658609713m 4.383199691772461m -205.0727171679261m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Chicane 1</div>
+                        </button><button class="Hotspot" slot="hotspot-7" data-position="750.0196331018328m 4.301426887512207m -627.1049263573098m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Chicane 2</div>
+                        </button><button class="Hotspot" slot="hotspot-9" data-position="1553.1981140869248m 3.9795031547546387m -744.167073499767m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virage Mulsanne</div>
+                        </button><button class="Hotspot" slot="hotspot-10" data-position="1120.0114165116738m 4.3142390251164215m 215.8152614218074m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Indianapolis + Arnage</div>
+                        </button><button class="Hotspot" slot="hotspot-12" data-position="540.4578840541333m 4.252845764160156m 622.2146580378704m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
                             <div class="HotspotAnnotation">Virages Porsche</div>
-                        </button>
-                        <button class="Hotspot" slot="hotspot-10"
-                            data-position="-168.95115103140398m 3.9795031547546387m 632.1979575069216m"
-                            data-normal="0m 1m 0m" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Virage Ford</div>
+                        </button><button class="Hotspot" slot="hotspot-13" data-position="286.690264125599m 4.092116355896451m 629.4504623266796m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Virage Karting</div>
+                        </button><button class="Hotspot" slot="hotspot-14" data-position="-243.63367420848414m 4.314238071441196m 664.0103188633019m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Chicane Ford + Raccordement</div>
                         </button>
                         <div class="progress-bar hide" slot="progress-bar">
                             <div class="update-bar"></div>
@@ -209,16 +182,17 @@
         const resetButton = document.querySelector('#reset-button');
 
         const hotspotData = {
-            'hotspot-1': { title: "Chicane Dunlop", desc: "Créée pour ralentir les voitures avant la courbe Dunlop, c'est l'un des points les plus iconiques du circuit historique." },
-            'hotspot-2': { title: "Virage de la Chapelle", desc: "Un virage technique qui demande une grande précision, nommé d'après la petite chapelle située à proximité." },
-            'hotspot-3': { title: "Virage du Tertre Rouge", desc: "Le point d'entrée vers la mythique ligne droite des Hunaudières. Un virage crucial pour la vitesse de pointe." },
-            'hotspot-4': { title: "Hunaudières - Chicane 1", desc: "Première des deux chicanes ajoutées en 1990 pour limiter la vitesse maximale des voitures sur la ligne droite de 6km." },
-            'hotspot-5': { title: "Hunaudières - Chicane 2", desc: "Deuxième chicane de la ligne droite, surnommée chicane 'Michelin' par le passé." },
-            'hotspot-6': { title: "Virage de Mulsanne", desc: "Un virage à 90 degrés mythique au bout des Hunaudières, lieu de nombreux freinages spectaculaires." },
-            'hotspot-7': { title: "Virage d'Indianapolis", desc: "Un virage rapide avec un léger dévers, nommé en hommage au célèbre circuit américain." },
-            'hotspot-8': { title: "Virage d'Arnage", desc: "Le virage le plus lent du circuit, très technique et apprécié des photographes pour la proximité des voitures." },
-            'hotspot-9': { title: "Virages Porsche", desc: "Un enchaînement de virages rapides et techniques, réservé aux pilotes les plus audacieux." },
-            'hotspot-10': { title: "Virage Ford", desc: "L'ultime chicane avant la ligne droite des stands, souvent le théâtre de manœuvres décisives dans le dernier tour." }
+            'hotspot-1': { title: "Ligne de départ", desc: "Le point de départ mythique des 24 Heures du Mans, où les voitures s'élancent devant les tribunes combles." },
+            'hotspot-2': { title: "Chicane Dunlop", desc: "Une chicane rapide située sous la passerelle Dunlop, véritable icône du circuit." },
+            'hotspot-3': { title: "Tertre Rouge", desc: "Un virage crucial car il conditionne toute la vitesse de pointe dans la ligne droite des Hunaudières." },
+            'hotspot-5': { title: "Début Hunaudières", desc: "Le début de la légendaire ligne droite de 6 km où les voitures atteignent leurs vitesses maximales." },
+            'hotspot-6': { title: "Chicane 1", desc: "La première chicane de la ligne droite des Hunaudières, ajoutée en 1990 pour la sécurité." },
+            'hotspot-7': { title: "Chicane 2", desc: "La seconde chicane sur les Hunaudières, testant l'endurance des freins à haute vitesse." },
+            'hotspot-9': { title: "Virage Mulsanne", desc: "Un freinage brutal à angle droit au bout des Hunaudières, l'un des virages les plus célèbres du circuit." },
+            'hotspot-10': { title: "Indianapolis + Arnage", desc: "Un enchaînement technique composé d'Indianapolis (relevé) et d'Arnage (le plus lent du circuit)." },
+            'hotspot-12': { title: "Virages Porsche", desc: "Une section ultra-rapide et technique qui serpente le long du circuit permanent." },
+            'hotspot-13': { title: "Virage Karting", desc: "Un virage serré situé juste avant le raccordement, nommé en raison de la piste de karting adjacente." },
+            'hotspot-14': { title: "Ford + Raccordement", desc: "Le dernier défi avant la ligne droite des stands, où se jouent souvent les victoires serrées." }
         };
 
         const initialTarget = modelViewer.cameraTarget;
