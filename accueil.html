@@ -577,35 +577,48 @@
         let isZooming = false;
         let rotationSpeed = 0.0015;
 
-        // Mouse drag
+        // Mouse & Touch drag
         let isDragging = false;
         let prevMouse = { x: 0, y: 0 };
         const canvas = renderer.domElement;
 
-        canvas.addEventListener('mousedown', e => {
+        function onPointerDown(clientX, clientY) {
             if (isZooming) return;
             isDragging = true;
             isRotating = false;
-            prevMouse = { x: e.clientX, y: e.clientY };
+            prevMouse = { x: clientX, y: clientY };
             canvas.style.cursor = 'grabbing';
-        });
+        }
 
-        window.addEventListener('mouseup', () => {
+        function onPointerUp() {
             isDragging = false;
             if (!isZooming) canvas.style.cursor = 'grab';
-        });
+        }
 
-        window.addEventListener('mousemove', e => {
+        function onPointerMove(clientX, clientY) {
             if (!isDragging || isZooming) return;
-            const dx = e.clientX - prevMouse.x;
-            const dy = e.clientY - prevMouse.y;
-            prevMouse = { x: e.clientX, y: e.clientY };
+            const dx = clientX - prevMouse.x;
+            const dy = clientY - prevMouse.y;
+            prevMouse = { x: clientX, y: clientY };
 
             if (earthMesh) {
                 earthMesh.rotation.y += dx * 0.005;
                 earthMesh.rotation.x += dy * 0.005;
                 earthMesh.rotation.x = Math.max(-1.2, Math.min(1.2, earthMesh.rotation.x));
             }
+        }
+
+        canvas.addEventListener('mousedown', e => onPointerDown(e.clientX, e.clientY));
+        window.addEventListener('mouseup', onPointerUp);
+        window.addEventListener('mousemove', e => onPointerMove(e.clientX, e.clientY));
+
+        // Touch support for globe rotation
+        canvas.addEventListener('touchstart', e => {
+            if (e.touches.length > 0) onPointerDown(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        window.addEventListener('touchend', onPointerUp);
+        window.addEventListener('touchmove', e => {
+            if (e.touches.length > 0) onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
         });
 
         /* ===================================================
@@ -614,15 +627,39 @@
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
 
-        canvas.addEventListener('click', e => {
-            if (isZooming || isDragging) return;
+        canvas.addEventListener('click', e => handleInteraction(e.clientX, e.clientY));
 
-            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        // Touch interaction for tapping the hotspot
+        canvas.addEventListener('touchstart', e => {
+            if (e.touches.length > 0) {
+                // Save coordinates to check if it's a tap or a drag later
+                canvas.dataset.touchX = e.touches[0].clientX;
+                canvas.dataset.touchY = e.touches[0].clientY;
+            }
+        }, { passive: true });
+
+        canvas.addEventListener('touchend', e => {
+            if (e.changedTouches.length > 0) {
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                const startX = parseFloat(canvas.dataset.touchX) || endX;
+                const startY = parseFloat(canvas.dataset.touchY) || endY;
+
+                // Treat as click if movement is very small (less than 10px)
+                if (Math.abs(endX - startX) < 10 && Math.abs(endY - startY) < 10) {
+                    handleInteraction(endX, endY);
+                }
+            }
+        });
+
+        function handleInteraction(clientX, clientY) {
+            if (isZooming) return;
+
+            mouse.x = (clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(clientY / window.innerHeight) * 2 + 1;
 
             raycaster.setFromCamera(mouse, camera);
 
-            // Test sur la sphère entière mais on restreint à proximité du hotspot
             if (!hotspotMesh) return;
 
             const worldHotspot = new THREE.Vector3();
@@ -631,10 +668,10 @@
             const ray = raycaster.ray;
             const dist = ray.distanceToPoint(worldHotspot);
 
-            if (dist < 0.08) {
+            if (dist < 0.15) { // increased hit radius slightly for easier mobile tapping
                 startZoom();
             }
-        });
+        }
 
         /* ===================================================
            SPEED LINES CANVAS

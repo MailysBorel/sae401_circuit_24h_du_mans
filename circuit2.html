@@ -32,8 +32,8 @@
             --bg-info: rgba(10, 10, 10, 0.94);
             --bg-ctrl: rgba(8, 8, 8, 0.82);
             --bg-input: rgba(255, 255, 255, 0.06);
-            --text: #e6e6e6;
-            --text-muted: rgba(255, 255, 255, 0.45);
+            --text: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.70);
             --border: rgba(255, 255, 255, 0.08);
             --shadow: rgba(0, 0, 0, 0.6);
         }
@@ -51,8 +51,8 @@
             --bg-info: rgba(255, 255, 255, 0.97);
             --bg-ctrl: rgba(240, 240, 240, 0.90);
             --bg-input: rgba(0, 0, 0, 0.04);
-            --text: #1a1a1a;
-            --text-muted: rgba(0, 0, 0, 0.45);
+            --text: #050505;
+            --text-muted: rgba(0, 0, 0, 0.65);
             --border: rgba(0, 0, 0, 0.1);
             --shadow: rgba(0, 0, 0, 0.15);
         }
@@ -827,6 +827,7 @@
 
         #intro-overlay.fade-out {
             opacity: 0;
+            pointer-events: none;
         }
 
         .intro-label {
@@ -1080,28 +1081,52 @@
                 <div class="articles">
                     <article class="card">
                         <h3>1923 : La naissance</h3>
-                        <p>Les 24 Heures du Mans sont une célèbre course d'endurance de 24 heures qui se tient chaque
-                            année en juin. Créée en 1923, elle se déroule sur un circuit mythique de 13,6 km situé au
-                            Mans, à environ 1h30 de Paris, mêlant routes départementales au sud de la ville et une
-                            portion du circuit permanent Bugatti. Cette épreuve figure parmi les trois compétitions
-                            automobiles les plus prestigieuses au monde, aux côtés du Grand Prix de Monaco et des 500
-                            miles d'Indianapolis.</p>
+                        <p>Les 24 Heures du Mans sont une célèbre course d’endurance de 24 heures qui se tient chaque
+                            année en juin.
+                            Créée en 1923, elle se déroule sur un circuit mythique de 13,6 km situé au Mans, à environ
+                            1h30 de Paris,
+                            mêlant routes départementales au sud de la ville et une portion du circuit permanent
+                            Bugatti.
+                            Cette épreuve figure parmi les trois compétitions automobiles les plus prestigieuses au
+                            monde,
+                            aux côtés du Grand Prix de Monaco et des 500 miles d’Indianapolis. Elle reste également
+                            l’une des
+                            plus anciennes courses automobiles encore disputées aujourd’hui.</p>
+
                         <p>Contrairement à la Formule 1, où la victoire revient au pilote le plus rapide, cette
-                            compétition légendaire couronne avant tout la fiabilité, la stratégie et la résistance
-                            mécanique autant qu'humaine. Aujourd'hui, elle constitue l'épreuve phare d'un véritable
-                            championnat mondial d'endurance, attirant constructeurs, ingénieurs et pilotes venus
-                            repousser les limites de la performance sur la durée.</p>
+                            compétition légendaire couronne avant tout la fiabilité,
+                            la stratégie et la résistance mécanique autant qu’humaine. Aujourd’hui, elle constitue
+                            l’épreuve phare d’un véritable championnat mondial d’endurance,
+                            attirant constructeurs, ingénieurs et pilotes venus repousser les limites de la performance
+                            sur la durée.</p>
+
                         <p>Au fil des décennies, le circuit évolue constamment. Certaines sections deviennent mythiques
-                            :<br>
-                            - La ligne droite des Hunaudières, longue de 6 km, où un prototype WM atteindra un record de
-                            407 km/h ;<br>
-                            - Le virage de Mulsanne, connu pour son freinage brutal et sa dangerosité ;<br>
-                            - La chicane Dunlop, véritable symbole visuel du circuit ;<br>
-                            - L'enchaînement Indianapolis–Arnage, l'un des plus techniques du tracé.</p>
-                        <p>L'histoire du Mans est aussi marquée par des moments tragiques. L'un des plus sombres reste
-                            la catastrophe de 1955, lorsqu'une Mercedes s'envole dans les tribunes, provoquant la mort
-                            de 79 personnes. Aujourd'hui, le circuit des 24 Heures du Mans reste un monument du sport
-                            automobile : un lieu où se rencontrent tradition, innovation, performance et histoire.</p>
+                            :
+                            <br>- La ligne droite des Hunaudières, longue de 6 km, où un prototype WM atteindra un
+                            record de 407 km/h ;
+                            <br>- Le virage de Mulsanne, connu pour son freinage brutal et sa dangerosité ;
+                            <br>- La chicane Dunlop, véritable symbole visuel du circuit ;
+                            <br>- ou encore l’enchaînement Indianapolis–Arnage, l’un des plus techniques et des plus
+                            lents du tracé.<br>
+                            <br>Ces évolutions ne sont pas seulement historiques : elles sont aussi techniques. Le Mans
+                            devient un véritable laboratoire d’innovation.
+                            On y voit apparaître les pneus radiaux dans les années 1950, les freins à disque en 1953,
+                            puis les phares LED dans les années 2000.
+                            Chaque avancée testée sur le circuit influence ensuite l’industrie automobile.
+                        </p>
+
+                        <p>L’histoire du Mans est aussi marquée par des moments tragiques. L’un des plus sombres reste
+                            la catastrophe de 1955,
+                            lorsqu’une Mercedes s’envole dans les tribunes, provoquant la mort de 79 personnes. Cet
+                            événement bouleverse profondément
+                            le sport automobile et entraîne une refonte des normes de sécurité dans le monde entier.
+                            À partir des années 1960, le circuit devient le théâtre de rivalités mythiques. La plus
+                            célèbre est sans doute Ferrari contre Ford (1963–1966),
+                            une bataille technologique et financière colossale qui se conclut par la domination totale
+                            de Ford. Plus tard, d’autres duels marqueront l’histoire,
+                            comme Audi contre Toyota dans les années 2010, ou plus récemment Ferrari contre Peugeot.
+                            Aujourd’hui, le circuit des 24 Heures du Mans reste un monument du sport automobile :
+                            un lieu où se rencontrent tradition, innovation, performance et histoire</p>
                     </article>
                 </div>
             </div>
@@ -1184,36 +1209,27 @@
         /* ============================================================
            CINEMATIC INTRO
         ============================================================ */
-        // Build intro overlay inside the viewer container
         const viewerEl = document.querySelector('.viewer-container');
         const introOverlay = document.createElement('div');
         introOverlay.id = 'intro-overlay';
         introOverlay.innerHTML = `
-        <div class="intro-label">24 Heures du Mans</div>
-        <div class="intro-title">Circuit de la Sarthe</div>
-        <div class="intro-sub">— Modélisation 3D Interactive —</div>`;
+            <div class="intro-label">24 Heures du Mans</div>
+            <div class="intro-title">Circuit de la Sarthe</div>
+            <div class="intro-sub">— Modélisation 3D Interactive —</div>`;
         viewerEl.appendChild(introOverlay);
 
         modelViewer.addEventListener('load', () => {
-            // Phase 1 : Vue top-down lointaine (départ cinématique)
             modelViewer.interpolationDecay = 160;
             modelViewer.cameraOrbit = '30deg 12deg 1600m';
 
-            // Phase 2 : Sweep à 180° autour du circuit (balayage panoramique)
-            setTimeout(() => {
-                modelViewer.cameraOrbit = '200deg 55deg 600m';
-            }, 1400);
+            setTimeout(() => { modelViewer.cameraOrbit = '200deg 55deg 600m'; }, 1400);
 
-            // Phase 3 : Fondu de l'overlay + zoom vers vue normale
             setTimeout(() => {
                 introOverlay.classList.add('fade-out');
                 modelViewer.cameraOrbit = 'auto 75deg 100m';
             }, 2800);
 
-            // Suppression de l'overlay après la transition
-            setTimeout(() => {
-                introOverlay.style.display = 'none';
-            }, 4400);
+            setTimeout(() => { introOverlay.style.display = 'none'; }, 4400);
         });
 
         /* ============================================================
