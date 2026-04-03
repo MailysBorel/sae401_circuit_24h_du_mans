@@ -361,6 +361,18 @@
         canvas.zooming {
             cursor: default;
         }
+
+        /* ======= RESPONSIVE DESIGN ======= */
+        @media (max-width: 768px) {
+            .ui-overlay { padding: 30px 20px; }
+            .logo-img { height: 45px; }
+            h1 { font-size: 1.8rem; letter-spacing: 10px; }
+            .tagline { font-size: 0.7rem; letter-spacing: 4px; }
+            .hint { font-size: 0.65rem; letter-spacing: 2px; text-align: center; }
+            #hotspot-label.visible { transform: translate(-50%, -180%); }
+            #zoom-cta .cta-inner { font-size: 1.2rem; letter-spacing: 6px; }
+            #zoom-cta .cta-sub { font-size: 0.75rem; letter-spacing: 4px; }
+        }
     </style>
 </head>
 

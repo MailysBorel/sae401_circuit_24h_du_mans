@@ -18,6 +18,12 @@
         }
         h1 { letter-spacing: 5px; font-weight: 300; margin-bottom: 5px; }
         .hint { opacity: 0.7; font-size: 0.9rem; }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; letter-spacing: 3px; }
+            .hint { font-size: 0.75rem; padding: 0 10px; }
+        }
     </style>
 </head>
 <body>
@@ -56,8 +62,9 @@ function rotateGlobe() {
         requestAnimationFrame(rotateGlobe);
     }
 }
-// On arrête la rotation dès que l'utilisateur interagit avec la souris
+// On arrête la rotation dès que l'utilisateur interagit avec la souris ou au doigt
 map.on('mousedown', () => { isRotating = false; });
+map.on('touchstart', () => { isRotating = false; });
 rotateGlobe();
 
 // 2. Configuration de la Popup (SANS l'ouvrir tout de suite)

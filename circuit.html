@@ -17,14 +17,21 @@
                 <img src="logo_24h_le_mans.png" alt="Logo du projet">
             </a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#3d-section">Modélisation</a></li>
-                <li><a href="#articles">Histoire & Articles</a></li>
-                <li><a href="index.html">← Retour Carte</a></li>
-                <li><a href="accueil.html">Test INTRO</a></li>
-            </ul>
-        </nav>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+        </button>
+        <div class="header-right" id="header-right">
+            <nav>
+                <ul>
+                    <li><a href="#3d-section">Modélisation</a></li>
+                    <li><a href="#articles">Histoire & Articles</a></li>
+                    <li><a href="index.html">← Retour Carte</a></li>
+                    <li><a href="accueil.html">Test INTRO</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -357,6 +364,23 @@
         modelViewer.addEventListener('pointercancel', () => {
             modelViewer.interpolationDecay = 300;
         });
+        /* ============================================================
+           MOBILE MENU TOGGLE
+        ============================================================ */
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const headerRight = document.getElementById('header-right');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                headerRight.classList.toggle('open');
+            });
+            // Close menu when clicking a link
+            headerRight.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    headerRight.classList.remove('open');
+                });
+            });
+        }
     </script>
 </body>
 
