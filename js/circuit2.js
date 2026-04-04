@@ -73,7 +73,7 @@ themeToggle.addEventListener('click', () => {
    SOUND LOGIC (SYNCED WITH INDEX)
 ============================================================ */
 let isMuted = localStorage.getItem('le-mans-muted') === 'true';
-let userVolume = localStorage.getItem('le-mans-volume') || 0.5;
+let userVolume = localStorage.getItem('le-mans-volume') || 0.1;
 
 // Initial state
 volumeSlider.value = userVolume;
