@@ -41,8 +41,23 @@
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
             </button>
+            
+            <!-- Sound Control Suite -->
+            <div class="sound-suite-container">
+                <div class="volume-slider-wrapper">
+                    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+                </div>
+                <button id="sound-toggle" class="sound-control" title="Activer/Désactiver le son">
+                    <svg id="sound-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
+
+    <!-- Background Music -->
+    <audio id="bg-music" src="asset/Gt5.mp3" loop preload="auto"></audio>
 
     <main>
         <section id="3d-section" class="section">

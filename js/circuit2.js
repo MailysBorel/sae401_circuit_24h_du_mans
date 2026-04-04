@@ -38,8 +38,12 @@ const locationName = document.getElementById('location-name');
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const kbdToast = document.getElementById('kbd-toast');
+const bgMusic = document.getElementById('bg-music');
+const soundBtn = document.getElementById('sound-toggle');
+const volumeSlider = document.getElementById('volume-slider');
 
 const initialTarget = modelViewer.cameraTarget;
+
 let currentIndex = -1; // -1 = vue globale
 let tourInterval = null;
 let isTourActive = false;
@@ -63,6 +67,52 @@ applyTheme(savedTheme);
 themeToggle.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
     applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+/* ============================================================
+   SOUND LOGIC (SYNCED WITH INDEX)
+============================================================ */
+let isMuted = localStorage.getItem('le-mans-muted') === 'true';
+let userVolume = localStorage.getItem('le-mans-volume') || 0.5;
+
+// Initial state
+volumeSlider.value = userVolume;
+if (isMuted) {
+    soundBtn.classList.add('muted');
+    bgMusic.volume = 0;
+} else {
+    bgMusic.volume = userVolume;
+}
+
+// Start music on first interaction
+function startMusic() {
+    if (bgMusic.paused && !isMuted) {
+        bgMusic.play().catch(e => console.warn("Autoplay blocked", e));
+    }
+}
+document.addEventListener('mousedown', startMusic, { once: true });
+document.addEventListener('keydown', startMusic, { once: true });
+
+soundBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    localStorage.setItem('le-mans-muted', isMuted);
+    soundBtn.classList.toggle('muted', isMuted);
+    
+    if (isMuted) {
+        bgMusic.pause();
+    } else {
+        bgMusic.volume = userVolume;
+        bgMusic.play().catch(e => console.warn("Audio play blocked", e));
+    }
+});
+
+volumeSlider.addEventListener('input', (e) => {
+    userVolume = e.target.value;
+    localStorage.setItem('le-mans-volume', userVolume);
+    
+    if (!isMuted) {
+        bgMusic.volume = userVolume;
+    }
 });
 
 /* ============================================================
@@ -291,11 +341,6 @@ modelViewer.addEventListener('camera-change', (e) => {
 modelViewer.addEventListener('pointerdown', () => { modelViewer.interpolationDecay = 20; });
 modelViewer.addEventListener('pointerup', () => {
     modelViewer.interpolationDecay = 300;
-    const radius = modelViewer.getCameraOrbit().radius;
-    if (radius > 350 && currentIndex >= 0) {
-        modelViewer.cameraTarget = initialTarget;
-        infoPanel.classList.add('hidden');
-    }
 });
 modelViewer.addEventListener('pointercancel', () => { modelViewer.interpolationDecay = 300; });
 

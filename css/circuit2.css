@@ -173,6 +173,101 @@ nav a:hover {
 }
 
 /* ============================================================
+   SOUND CONTROL
+============================================================ */
+.sound-suite-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.volume-slider-wrapper {
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38px;
+    height: 0;
+    overflow: hidden;
+    background: var(--bg-ctrl);
+    backdrop-filter: blur(16px);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 25px var(--shadow);
+    order: 2;
+}
+
+.sound-suite-container:hover .volume-slider-wrapper {
+    height: 120px;
+    padding: 12px 0;
+}
+
+.sound-control {
+    order: 1;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s;
+    flex-shrink: 0;
+    position: relative;
+}
+
+#volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+    transform: rotate(-90deg);
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--red);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(225, 6, 0, 0.4);
+}
+
+.sound-control:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+    box-shadow: 0 0 16px rgba(225, 6, 0, 0.4);
+}
+
+.sound-control.muted svg path {
+    stroke-opacity: 0.3;
+}
+
+.sound-control.muted::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: var(--red);
+    transform: rotate(-45deg);
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
    SECTIONS
 ============================================================ */
 .section {

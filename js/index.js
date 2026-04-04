@@ -51,6 +51,79 @@ const marker = new maplibregl.Marker({ color: "#ff0000" })
     .addTo(map);
 
 /* ===================================================
+   SOUND LOGIC
+=================================================== */
+const soundBtn = document.getElementById('sound-toggle');
+const vroomAudio = document.getElementById('vroom-sound');
+const bgMusic = document.getElementById('bg-music');
+const volumeSlider = document.getElementById('volume-slider');
+
+let isMuted = localStorage.getItem('le-mans-muted') === 'true';
+let userVolume = localStorage.getItem('le-mans-volume') || 0.5;
+
+// Initial state
+volumeSlider.value = userVolume;
+if (isMuted) {
+    soundBtn.classList.add('muted');
+    bgMusic.volume = 0;
+    vroomAudio.volume = 0;
+} else {
+    bgMusic.volume = userVolume;
+    vroomAudio.volume = userVolume;
+}
+
+// Start music on first interaction (due to browser policy)
+function startMusic() {
+    if (bgMusic.paused && !isMuted) {
+        bgMusic.play().catch(e => console.warn("Autoplay blocked", e));
+    }
+}
+document.addEventListener('mousedown', startMusic, { once: true });
+document.addEventListener('keydown', startMusic, { once: true });
+
+soundBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    localStorage.setItem('le-mans-muted', isMuted);
+    soundBtn.classList.toggle('muted', isMuted);
+    
+    if (isMuted) {
+        bgMusic.pause();
+    } else {
+        bgMusic.volume = userVolume;
+        bgMusic.play().catch(e => console.warn("Audio play blocked", e));
+    }
+});
+
+volumeSlider.addEventListener('input', (e) => {
+    userVolume = e.target.value;
+    localStorage.setItem('le-mans-volume', userVolume);
+    
+    if (!isMuted) {
+        bgMusic.volume = userVolume;
+        vroomAudio.volume = userVolume;
+    }
+});
+
+function playCinematicSound() {
+    if (!isMuted) {
+        // Fade out music
+        const fadeInterval = setInterval(() => {
+            if (bgMusic.volume > 0.05) {
+                bgMusic.volume -= 0.05;
+            } else {
+                bgMusic.volume = 0;
+                bgMusic.pause();
+                clearInterval(fadeInterval);
+            }
+        }, 50);
+
+        vroomAudio.currentTime = 0;
+        vroomAudio.play().catch(e => console.warn("Audio play blocked", e));
+    }
+}
+
+
+/* ===================================================
    CHECKERED FLAG TRANSITION
 =================================================== */
 function buildCheckerOverlay() {
@@ -138,7 +211,10 @@ document.addEventListener('click', function (e) {
         document.getElementById('speed-canvas').classList.add('active');
         document.getElementById('speed-overlay').classList.add('active');
 
+        playCinematicSound();
+
         function zoomAnim(ts) {
+
             if (!tStart) tStart = ts;
             const t = Math.min((ts - tStart) / DURATION, 1);
 
