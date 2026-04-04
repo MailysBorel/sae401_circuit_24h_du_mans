@@ -1,0 +1,111 @@
+body { margin: 0; background: #000; color: white; font-family: 'Segoe UI', sans-serif; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+/* Overlay élégant */
+.overlay {
+    position: absolute; top: 30px; width: 100%; text-align: center;
+    z-index: 10; pointer-events: none;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+h1 { letter-spacing: 5px; font-weight: 700; margin-bottom: 5px; text-shadow: 0 2px 15px rgba(0,0,0,1); }
+.hint { opacity: 0.95; font-size: 0.95rem; font-weight: 500; text-shadow: 0 1px 8px rgba(0,0,0,1); }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 { font-size: 1.5rem; letter-spacing: 3px; }
+    .hint { font-size: 0.75rem; padding: 0 10px; }
+    #zoom-cta .cta-inner { font-size: 1.2rem; letter-spacing: 6px; }
+    #zoom-cta .cta-sub { font-size: 0.75rem; letter-spacing: 4px; }
+}
+
+/* ======= SPEED LINES (vignette zoom) ======= */
+#speed-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 15;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: radial-gradient(ellipse at center,
+            transparent 30%,
+            rgba(0, 0, 0, 0.6) 70%,
+            rgba(0, 0, 0, 0.95) 100%);
+}
+
+#speed-overlay.active {
+    opacity: 1;
+}
+
+#speed-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 16;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+#speed-canvas.active {
+    opacity: 1;
+}
+
+/* ======= ZOOM CTA ======= */
+#zoom-cta {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    text-align: center;
+}
+
+#zoom-cta.visible {
+    opacity: 1;
+}
+
+#zoom-cta .cta-inner {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.9), 0 0 80px rgba(225, 6, 0, 0.6);
+}
+
+#zoom-cta .cta-sub {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 6px;
+    color: #e10600;
+    margin-top: 8px;
+    text-shadow: 0 0 20px rgba(225, 6, 0, 0.8);
+}
+
+/* ======= CHECKERED FLAG TRANSITION ======= */
+#checker-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    pointer-events: none;
+    display: grid;
+}
+
+.checker-col {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-100%);
+    transition: none;
+}
+
+.checker-col.drop {
+    transition: transform 0.45s cubic-bezier(0.55, 0, 1, 0.45);
+    transform: translateY(0%);
+}
+
+.checker-cell {
+    flex: 1;
+}

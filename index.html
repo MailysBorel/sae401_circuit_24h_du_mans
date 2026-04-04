@@ -3,28 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Globe Le Mans - Satellite 4K</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
     <link rel="icon" type="image/png" href="logo_24h_le_mans.png">
     <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
-    <style>
-        body { margin: 0; background: #000; color: white; font-family: 'Segoe UI', sans-serif; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-        
-        /* Overlay élégant */
-        .overlay {
-            position: absolute; top: 30px; width: 100%; text-align: center;
-            z-index: 10; pointer-events: none;
-            text-shadow: 0 0 10px rgba(0,0,0,0.8);
-        }
-        h1 { letter-spacing: 5px; font-weight: 300; margin-bottom: 5px; }
-        .hint { opacity: 0.7; font-size: 0.9rem; }
-        
-        /* Responsive design */
-        @media (max-width: 768px) {
-            h1 { font-size: 1.5rem; letter-spacing: 3px; }
-            .hint { font-size: 0.75rem; padding: 0 10px; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
@@ -34,79 +18,18 @@
 </div>
 <div id="map"></div>
 
-<script>
-    const map = new maplibregl.Map({
-    container: 'map',
-    style: {
-        version: 8,
-        sources: {
-            'raster-tiles': {
-                type: 'raster',
-                tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
-                tileSize: 256,
-                attribution: 'Esri'
-            }
-        },
-        layers: [{ id: 'simple-tiles', type: 'raster', source: 'raster-tiles' }]
-    },
-    center: [0, 20],
-    zoom: 1.8,
-    projection: 'globe'
-});
+<!-- Speed lines canvas -->
+<canvas id="speed-canvas"></canvas>
+<div id="speed-overlay"></div>
 
-// 1. Rotation douce qui s'arrête au clic
-let isRotating = true;
-function rotateGlobe() {
-    if (isRotating && map.getZoom() < 4) {
-        map.setCenter([map.getCenter().lng + 0.15, map.getCenter().lat]);
-        requestAnimationFrame(rotateGlobe);
-    }
-}
-// On arrête la rotation dès que l'utilisateur interagit avec la souris ou au doigt
-map.on('mousedown', () => { isRotating = false; });
-map.on('touchstart', () => { isRotating = false; });
-rotateGlobe();
+<!-- Zoom CTA -->
+<div id="zoom-cta">
+    <div class="cta-inner">ACCÈS AU CIRCUIT</div>
+    <div class="cta-sub">LE MANS · 24H · ENDURANCE</div>
+</div>
 
-// 2. Configuration de la Popup (SANS l'ouvrir tout de suite)
-const popup = new maplibregl.Popup({ 
-    offset: 25, 
-    closeButton: true, 
-    closeOnClick: true 
-}).setHTML(
-    `<div style="color:#000; padding:5px;">
-        <h3 style="margin:0 0 10px 0;">Le Mans</h3>
-        <button id="enter-btn" style="background:#e10600; color:white; border:none; padding:10px 15px; cursor:pointer; font-weight:bold; border-radius:4px;">
-            ENTRER SUR LE CIRCUIT
-        </button>
-    </div>`
-);
+<div id="checker-overlay"></div>
 
-// 3. Le Marqueur
-const marker = new maplibregl.Marker({ color: "#ff0000" })
-    .setLngLat([0.205, 47.950])
-    .setPopup(popup) // La popup est liée mais reste cachée
-    .addTo(map);
-
-// 4. Action quand on clique sur le bouton DANS la popup
-document.addEventListener('click', function (e) {
-    if (e.target && e.target.id === 'enter-btn') {
-        isRotating = false; // Stop rotation si ce n'est pas déjà fait
-        
-        // Zoom cinématique
-        map.flyTo({
-            center: [0.205, 47.950],
-            zoom: 15,
-            pitch: 65,
-            speed: 0.6,
-            essential: true
-        });
-
-        // Redirection
-        setTimeout(() => {
-            window.location.href = 'circuit.html';
-        }, 4500);
-    }
-});
-</script>
+<script src="js/index.js"></script>
 </body>
 </html>
